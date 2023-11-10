@@ -1,3 +1,6 @@
+# Recursos internos e informações sensíveis
+Recursos/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
