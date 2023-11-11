@@ -142,6 +142,7 @@ words = filtered_df['transcript'].str.split().explode(
 ).value_counts().sort_values(ascending=False)
 
 words = words.reset_index()
+words.columns = ['word', 'count']
 
 col1, col2 = st.columns([4,1])
 
@@ -160,11 +161,11 @@ with col1:
 filtered_words = words.iloc[words_quantity[0]:words_quantity[1]]
 
 hist = alt.Chart(filtered_words).mark_bar().encode(
-    x=alt.X('index', sort='-y'),
-    y='transcript'
+    x=alt.X('word', sort='-y'),
+    y='count'
 )
 
 st.altair_chart(hist, use_container_width=True)
 st.markdown('### Lista de palavras:')
-st.session_state['wordslist'] = list(filtered_words['index'])
-st.write(', '.join(filtered_words['index']))
+st.session_state['wordslist'] = list(filtered_words['word'])
+st.write(', '.join(filtered_words['word']))
