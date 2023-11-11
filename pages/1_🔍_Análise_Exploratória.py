@@ -85,7 +85,7 @@ COLUMNS = {
     't_model_audio': 'str',
 }
 
-df = df[COLUMNS]
+df = df[list(COLUMNS.keys())]
 
 df = df[df['id'] != 'A02843']
 df = df[df['t_model_audio'] != 'NAO_FOI_EXTRAIDO_TEXTO']
