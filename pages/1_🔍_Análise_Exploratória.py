@@ -144,6 +144,8 @@ words = filtered_df['transcript'].str.split().explode(
 words = words.reset_index()
 words['transcript'] = words['transcript'].astype(int)
 
+st.dataframe(words)
+
 col1, col2 = st.columns([4,1])
 
 with col2:
