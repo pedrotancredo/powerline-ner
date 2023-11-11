@@ -142,9 +142,11 @@ words = filtered_df['transcript'].str.split().explode(
 ).value_counts().sort_values(ascending=False)
 
 words = words.reset_index()
-words['transcript'] = words['transcript'].astype(int)
 
 st.dataframe(words)
+
+words['transcript'] = words['transcript'].astype(int)
+
 
 col1, col2 = st.columns([4,1])
 
