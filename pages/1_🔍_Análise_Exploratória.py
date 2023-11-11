@@ -142,12 +142,13 @@ words = filtered_df['transcript'].str.split().explode(
 ).value_counts().sort_values(ascending=False)
 
 words = words.reset_index()
+words['transcript'] = words['transcript'].astype(int)
 
 col1, col2 = st.columns([4,1])
 
 with col2:
     threshold = st.number_input('Frequência mínima:', value=1,key='threshold', min_value=1)
-    words = words[words['transcript'] >= threshold]
+    words = words[words['transcript'] >= int(threshold)]
 
 with col1:
     words_quantity = st.slider('Filtro de palavras:', 1,
