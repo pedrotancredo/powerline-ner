@@ -1,6 +1,12 @@
 # Recursos internos e informações sensíveis
 recursos/
+NOME_OUTPUT/
+src/
+data/
+Dockerfile
 .vscode/
+run.bat
+images/banner-ori.png
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
