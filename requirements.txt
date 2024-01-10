@@ -1,3 +1,4 @@
 nltk==3.6.7
 streamlit-mic-recorder
 transformers
+torch==2.1.0
