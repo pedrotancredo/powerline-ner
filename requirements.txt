@@ -1,4 +1,5 @@
 nltk==3.6.7
 streamlit-mic-recorder
+st-annotated-text
 transformers
 torch==2.1.0
