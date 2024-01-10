@@ -5,7 +5,8 @@ from transformers import AutoTokenizer, AutoModelForTokenClassification, pipelin
 
 @st.cache_data
 def load_model():
-    model_name = "recursos/base_m3/"
+    # model_name = "recursos/base_m3/"
+    model_name = "pedrotancredo/powerlines-ner"
     tokenizer = AutoTokenizer.from_pretrained(model_name)
     model = AutoModelForTokenClassification.from_pretrained(
         model_name, use_safetensors=True
