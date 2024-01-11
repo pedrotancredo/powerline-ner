@@ -7,7 +7,7 @@ from transformers import AutoTokenizer, AutoModelForTokenClassification, pipelin
 def load_model():
     # model_name = "recursos/base_m3/"
     model_name = "pedrotancredo/powerlines-ner"
-    tokenizer = AutoTokenizer.from_pretrained(model_name)
+    tokenizer = AutoTokenizer.from_pretrained(model_name, model_max_length=512)
     model = AutoModelForTokenClassification.from_pretrained(
         model_name, use_safetensors=True
     )
