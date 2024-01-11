@@ -58,7 +58,9 @@ Ao combinar dados visuais e auditivos, as empresas de energia podem desenvolver 
 
 #### 2.1. Dataset
 
-O conjunto de dados utilizado para o NER constitui-se das transcrições dos audios das inspeções aéreas de linhas de transmissão onde os inspetores relatam as anomalias encontradas. Com base na observação de diversos exemplos destas transcrições, foram definidas as seguintes classes:
+Durante as missões instrumentalizadas para a inspeção aérea das linhas de transmissão, foram produzidas aproximadamente 1500 horas de vídeos georreferenciados que abrangem o registro completo das inspeções realizadas pela Eletrobras Furnas de 2019 a 2021. Nessas missões, além do registro em vídeo, há a opção de utilizar a funcionalidade push-to-talk para adicionar áudio às gravações. Devido a essa abordagem ativa existe a garantia de que os áudios contêm informações valiosas sobre as situações observadas durante as inspeções. Ao longo desses três anos de inspeção, foram gravadas cerca de 30 horas de áudio, abrangendo mais de 30.000 sentenças.
+
+O conjunto de dados utilizado para o Reconhecimento de Entidades Nomeadas (NER) é composto pelas transcrições destas senteças nas quais os mais de 20 inspetores, de diferentes estados do país, relatam as anomalias identificadas. Com base na análise de diversos exemplos dessas transcrições, foram definidas as seguintes categorias:
 
 Componente: Partes que compõem a estrutura da linha de transmissão.
 
@@ -88,8 +90,8 @@ As transcrições contaram com um modelo customizado construído a partir de fer
 
 A seguir alguns exemplos do tipo de audio produzido pelo sistema:
 
-|   #   |                              Transcrição                              |                       Download                        |
-| :---: | :-------------------------------------------------------------------: | :---------------------------------------------------: |
+|   #   |                              Transcrição                              |                        Download                        |
+| :---: | :-------------------------------------------------------------------: | :---------------------------------------------------:  |
 |   1   |                264 cordoalha, lateral direita rompido.                | [🔊](https://polis.azureedge.net/mp4/examples/ex1.wav) |
 |   2   |                Torre 886, brotos de eucalipto no vão.                 | [🔊](https://polis.azureedge.net/mp4/examples/ex2.wav) |
 |   3   |                   Esfera aberta. Vão da torre 575.                    | [🔊](https://polis.azureedge.net/mp4/examples/ex3.wav) |

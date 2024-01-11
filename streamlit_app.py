@@ -2,7 +2,7 @@ import streamlit as st
 from PIL import Image
 import streamlit as st
 
-#Set config to expanded sidebar
+# Set config to expanded sidebar
 st.set_page_config(initial_sidebar_state="expanded")
 
 
@@ -100,11 +100,21 @@ with tabs[0]:
 with tabs[1]:
     st.subheader("Dataset")
     st.markdown(
-        """<div align="justify"><p>O conjunto de dados utilizado  para o NER
-        constitui-se das transcrições dos audios das inspeções aéreas de linhas
-        de transmissão onde os inspetores relatam as anomalias encontradas. Com
-        base na observação de diversos exemplos destas transcrições, foram definidas
-        as seguintes classes:</p></div>""",
+        """<div align="justify"><p>Durante as missões instrumentalizadas para a
+        inspeção aérea das linhas de transmissão, foram produzidas aproximadamente
+        1500 horas de vídeos georreferenciados que abrangem o registro completo
+        das inspeções realizadas pela Eletrobras Furnas de 2019 a 2021. Nessas
+        missões, além do registro em vídeo, há a opção de utilizar a funcionalidade
+        push-to-talk para adicionar áudio às gravações. Devido a essa abordagem
+        ativa, existe a garantia de que os áudios contêm informações valiosas
+        sobre as situações observadas durante as inspeções. Ao longo desses três
+        anos de inspeção, foram gravadas cerca de 30 horas de áudio, abrangendo
+        mais de 30.000 sentenças.</p>
+        <p>O conjunto de dados utilizado para o Reconhecimento de Entidades
+        Nomeadas (NER) é composto pelas transcrições destas senteças nas quais
+        os mais de 20 inspetores, de diferentes estados do país, relatam as anomalias
+        identificadas. Com base na análise de diversos exemplos dessas transcrições,
+        foram definidas as seguintes categorias:</p></div>""",
         unsafe_allow_html=True,
     )
     st.markdown(
