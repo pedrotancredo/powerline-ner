@@ -86,6 +86,21 @@ Localização: Localização exata das entidades identificadas.
 
     Exemplos: Torre 247, Torre 123, Vão 210, Vão 109
 
+As transcrições contaram com um modelo customizado construído a partir de ferramentas do serviço [Azure AI Speech](https://azure.microsoft.com/en-us/products/ai-services/ai-speech)
+
+A seguir alguns exemplos do tipo de audio produzido pelo sistema:
+
+| # | Transcrição | Download |
+| :-: | :-: | :-: |
+| 1 | 264 cordoalha, lateral direita rompido. | [🔊](example/ex1.wav)
+| 2 | Torre 886, brotos de eucalipto no vão. | [🔊](example/ex2.wav)
+| 3 | Esfera aberta. Vão da torre 575. | [🔊](example/ex3.wav)
+| 4 | Torre 009 da linha Rio Verde Rondonópolis, hortaliças no vão. | [🔊](example/ex4.wav)
+| 5 | Torre 403, ninho de pássaro da fase central. | [🔊](example/ex5.wav)
+| 6 | Fundação da torre 173, Furnas, pimenta um. | [🔊](example/ex6.wav)
+| 7 | Invasão não vão da torre 225, muro de alvenaria faz lateral esquerda. | [🔊](example/ex7.wav)
+| 8 | Torre 32 para 33, faltando uma esfera de sinalização de um para raio. | [🔊](example/ex8.wav)
+
 #### 2.2. Treinamento
 
 Para o treinamento utilizou-se 2.206 setenças totalizando mais de 20.000 palavras
@@ -149,6 +164,12 @@ E o último resultado, públicado em [Hugging-Face](https://huggingface.co/pedro
 | **Weighted Avg**  | **0.89**  | **0.91** | **0.90** | **2551** |
 
 ### 4. Conclusões
+
+**TODO**
+**INCLUIR COMENTÁRIO SOBRE IMPORTÂNCIA DO MODELO DE TRANSCRIÇÃO**
+**INCLUIR ARQUIVOS DE AUDIO COM EXEMPLOS DO DADO**
+**INCLUIR IMAGEM DO SISTEMA DE COLETA**
+**INCLUIR IMAGEM DO SISTEMA DE PESQUISA POR COORDENADA?**
 
 O avanço significativo na abordagem de manutenção preditiva e monitoramento da infraestrutura crítica das linhas de transmissão é evidenciado pelo desenvolvimento e implementação do modelo de Reconhecimento de Entidades Nomeadas (NER). É importante destacar que, devido às características intrínsecas desse tipo de missão, onde o tempo disponível para anotações estruturadas é limitado, a utilização do NER se mostra particularmente valiosa. Ao examinar automaticamente as transcrições de áudios provenientes das inspeções aéreas, o NER classifica entidades como Componente, Anomalia, Posição, Linha de Transmissão, Evento e Localização. Isso resulta em uma visão integrada e abrangente do estado operacional das linhas, contribuindo para a eficiência e confiabilidade na manutenção preditiva desse componente crítico da infraestrutura elétrica.
 
