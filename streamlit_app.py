@@ -142,7 +142,7 @@ with tabs[1]:
     st.markdown("#### Exemplos de Transcrições:")
 
     st.markdown(
-        """|   #   |                              Transcrição                              |                        Download                        | 
+        """|   #   |                              Transcrição                              |                        Audio                       | 
 | :---: | :-------------------------------------------------------------------: | :---------------------------------------------------:  | 
 |   1   |                264 cordoalha, lateral direita rompido.                | <audio controls><source src="https://polis.azureedge.net/mp4/examples/ex1.wav" type="audio/wav"></audio> | 
 |   2   |                Torre 886, brotos de eucalipto no vão.                 | <audio controls><source src="https://polis.azureedge.net/mp4/examples/ex2.wav" type="audio/wav"></audio> | 
