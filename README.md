@@ -92,14 +92,16 @@ A seguir alguns exemplos do tipo de audio produzido pelo sistema:
 
 | # | Transcrição | Download |
 | :-: | :-: | :-: |
-| 1 | 264 cordoalha, lateral direita rompido. | [🔊](example/ex1.wav)
-| 2 | Torre 886, brotos de eucalipto no vão. | [🔊](example/ex2.wav)
-| 3 | Esfera aberta. Vão da torre 575. | [🔊](example/ex3.wav)
-| 4 | Torre 009 da linha Rio Verde Rondonópolis, hortaliças no vão. | [🔊](example/ex4.wav)
-| 5 | Torre 403, ninho de pássaro da fase central. | [🔊](example/ex5.wav)
-| 6 | Fundação da torre 173, Furnas, pimenta um. | [🔊](example/ex6.wav)
-| 7 | Invasão não vão da torre 225, muro de alvenaria faz lateral esquerda. | [🔊](example/ex7.wav)
-| 8 | Torre 32 para 33, faltando uma esfera de sinalização de um para raio. | [🔊](example/ex8.wav)
+| 1 | 264 cordoalha, lateral direita rompido. | <audio controls><source src="https://polis.azureedge.net/mp4/examples/ex1.wav" type="audio/wav"></audio> 
+| 2 | Torre 886, brotos de eucalipto no vão. | <audio controls><source src="https://polis.azureedge.net/mp4/examples/ex2.wav" type="audio/wav"></audio> 
+| 3 | Esfera aberta. Vão da torre 575. | <audio controls><source src="https://polis.azureedge.net/mp4/examples/ex3.wav" type="audio/wav"></audio> 
+| 4 | Torre 009 da linha Rio Verde Rondonópolis, hortaliças no vão. | <audio controls><source src="https://polis.azureedge.net/mp4/examples/ex4.wav" type="audio/wav"></audio> 
+| 5 | Torre 403, ninho de pássaro da fase central. | <audio controls><source src="https://polis.azureedge.net/mp4/examples/ex5.wav" type="audio/wav"></audio> 
+| 6 | Fundação da torre 173, Furnas, pimenta um. | <audio controls><source src="https://polis.azureedge.net/mp4/examples/ex6.wav" type="audio/wav"></audio> 
+| 7 | Invasão não vão da torre 225, muro de alvenaria faz lateral esquerda. | <audio controls><source src="https://polis.azureedge.net/mp4/examples/ex7.wav" type="audio/wav"></audio> 
+| 8 | Torre 32 para 33, faltando uma esfera de sinalização de um para raio. | <audio controls><source src="https://polis.azureedge.net/mp4/examples/ex8.wav" type="audio/wav"></audio> 
+
+
 
 #### 2.2. Treinamento
 
