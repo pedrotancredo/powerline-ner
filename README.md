@@ -58,8 +58,6 @@ Ao combinar dados visuais e auditivos, as empresas de energia podem desenvolver 
 
 #### 2.1. Dataset
 
-O modelo foi treinado através do fine-tuning do modelo [BERTimbau Base](https://huggingface.co/neuralmind/bert-base-portuguese-cased) que consiste em um modelo BERT pré-treinado na língua portuguesa 
-
 O conjunto de dados utilizado para o NER constitui-se das transcrições dos audios das inspeções aéreas de linhas de transmissão onde os inspetores relatam as anomalias encontradas. Com base na observação de diversos exemplos destas transcrições, foram definidas as seguintes classes:
 
 Componente: Partes que compõem a estrutura da linha de transmissão.
@@ -101,16 +99,33 @@ A seguir alguns exemplos do tipo de audio produzido pelo sistema:
 |   7   | Invasão não vão da torre 225, muro de alvenaria faz lateral esquerda. | [🔊](https://polis.azureedge.net/mp4/examples/ex7.wav) |
 |   8   | Torre 32 para 33, faltando uma esfera de sinalização de um para raio. | [🔊](https://polis.azureedge.net/mp4/examples/ex8.wav) |
 
+Para o treinamento utilizou-se inicialmente 2.206 setenças totalizando mais de 20.000 palavras
+anotadas manualmente com auxílio da ferramenta [Label Studio](https://labelstud.io/), no entanto, embora a utilização dessa ferramenta gere um arquivo estruturado, houve a necessidade de se construir um conversor do arquivo de saída para que fosse ajustada ao formato específico necessário para o treinamento.
+
+Além da ferramenta de conversão foi contruído também uma ferramenta para fazer a análise exploratória do dataset onde foi possível avaliar a utilização de expressões regulares na criação de pré-anotações, conforme descrito abaixo:
+
+| Categoria | REGEX |
+| :-: | :-: |
+LOCALIZACAO | "(?:[Tt]orre\|[Vv]ão)\s+\d+\b[.,]?"
+EVENTO |	"\b[Ii]nspeção[,.]?(?:\s[dD]etalhada\|\s[aA]érea)?\b[.,]?"
+COMPONENTE (esfera)	| "\b[Ee]sferas?[,.]?(?:\sde[.,]?\s[sS]inalização)\b?[,.]?"
+COMPONENTE (espaçador) |	"\b[Ee]spaçador(?:es)?\b[.,]?"
+COMPONENTE (cadeia)	| "\b(?:[Cc]adeia de )?[Ii]solador(?:es)?\b[.,]?"
+COMPONENTE (faixa)	| "\b[Ff]aixa[.,]?(?: de servidão)?\b[.,]?"
+COMPONENTE (eucalipto)	| "\b[Ee]ucaliptos?\b[.,]?"
+ANOMALIA (quebrado)	| "\b[Qq]uebrad(?\:o\|a)s?\b[.,]?"
+ANOMALIA (ninho)	| "\b[Nn]inhos?(?: de (?:[Pp]assarinho\|[Pp]ássaro\|[Cc]uricaca\|[Gg]avião\|[Gg]aviões))?\b[.,?]?"
+POSICAO (fase)	| "(?:\b[Ff]ases?(?:[,.]? ?lateral)?(?: (?:esquerd[ao]\|direit[ao]))?(?: central\| do meio\| de baixo\| de cima\| inferior\| superior)?[.,]?(?: ré\| a?vante)?\b[.,]?)\|(?:\b(?:lateral)(?: (?:esquerd[ao]\|direit[ao]))?(?: central\| do meio\| de baixo\| de cima\| inferior\| superior)?[.,]?(?: ré\| a?vante)?\b[.,]?)"
+
+Todas as ferramentas podem ser acessadas através do link da monografia e, por se tratar de dados sensíveis da empresa, funcionam mediante a upload de arquivos externos.
+
+O esquema de anotação, utilizado na aplicação foi o [IOB-tagging](https://en.wikipedia.org/wiki/Inside%E2%80%93outside%E2%80%93beginning_(tagging)), que significa Inside-Outside-Beginning. Neste formato cada tag indica se a palavra correspondente está dentro, fora ou no início de uma entidade nomeada específica. A razão para isso é que entidades nomeadas podem ser formadas por mais de uma palavra.
+
 
 
 #### 2.2. Treinamento
 
-Para o treinamento utilizou-se 2.206 setenças totalizando mais de 20.000 palavras
-anotadas manualmente com auxílio da ferramenta [Label Studio](https://labelstud.io/), no entanto, embora a utilização dessa ferramenta gere um arquivo estruturado, houve a
-necessidade de se construir um conversor do arquivo de saída para que fosse 
-ajustada ao formato específico necessário para o treinamento.
-
-O esquema de anotação, utilizado na aplicação foi o [IOB-tagging](https://en.wikipedia.org/wiki/Inside%E2%80%93outside%E2%80%93beginning_(tagging)), que significa Inside-Outside-Beginning. Neste formato cada tag indica se a palavra correspondente está dentro, fora ou no início de uma entidade nomeada específica. A razão para isso é que entidades nomeadas podem ser formadas por mais de uma palavra.
+O modelo foi treinado através do fine-tuning do modelo [BERTimbau Base](https://huggingface.co/neuralmind/bert-base-portuguese-cased) que consiste em um modelo BERT pré-treinado na língua portuguesa 
 
 ### 3. Resultados
 
