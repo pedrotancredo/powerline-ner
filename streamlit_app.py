@@ -138,20 +138,24 @@ with tabs[1]:
         </p></div>""",
         unsafe_allow_html=True,
     )
+
     st.markdown("#### Exemplos de Transcrições:")
 
     st.markdown(
-        '''<div align="justify">
-        <p><b>Transcrição 1:</b> Um isolador quebrado, linha Furnas - Pimenta um,
-        cadeia simples.</p>
-        <p><b>Transcrição 2:</b> Esfera desbotada no Vão 210 da linha Adrianópolis -
-        Jacarepaguá 2.</p>
-        <p><b>Transcrição 3:</b> Espaçador aberto na fase lateral esquerda do vão
-        30 na LT Marimbondo - Porto Colômbia."''',
+        """|   #   |                              Transcrição                              |                        Download                        | 
+| :---: | :-------------------------------------------------------------------: | :---------------------------------------------------:  | 
+|   1   |                264 cordoalha, lateral direita rompido.                | <audio controls><source src="https://polis.azureedge.net/mp4/examples/ex1.wav" type="audio/wav"></audio> | 
+|   2   |                Torre 886, brotos de eucalipto no vão.                 | <audio controls><source src="https://polis.azureedge.net/mp4/examples/ex2.wav" type="audio/wav"></audio> | 
+|   3   |                   Esfera aberta. Vão da torre 575.                    | <audio controls><source src="https://polis.azureedge.net/mp4/examples/ex3.wav" type="audio/wav"></audio> | 
+|   4   |     Torre 009 da linha Rio Verde Rondonópolis, hortaliças no vão.     | <audio controls><source src="https://polis.azureedge.net/mp4/examples/ex4.wav" type="audio/wav"></audio> | 
+|   5   |             Torre 403, ninho de pássaro da fase central.              | <audio controls><source src="https://polis.azureedge.net/mp4/examples/ex5.wav" type="audio/wav"></audio> | 
+|   6   |              Fundação da torre 173, Furnas, pimenta um.               | <audio controls><source src="https://polis.azureedge.net/mp4/examples/ex6.wav" type="audio/wav"></audio> | 
+|   7   | Invasão não vão da torre 225, muro de alvenaria faz lateral esquerda. | <audio controls><source src="https://polis.azureedge.net/mp4/examples/ex7.wav" type="audio/wav"></audio> | 
+|   8   | Torre 32 para 33, faltando uma esfera de sinalização de um para raio. | <audio controls><source src="https://polis.azureedge.net/mp4/examples/ex8.wav" type="audio/wav"></audio> """,
         unsafe_allow_html=True,
     )
     st.markdown(
-        """<div align="justify"><p>É importante destacar que o conjunto de dados
+        """<div align="justify"><p></p><p>É importante destacar que o conjunto de dados
         foi gerado a partir das transcrições automáticas dos áudios de inspeções
         aéreas sem a imposição de orientações específicas para os inspetores.
         Dessa forma, o conjunto de dados incorpora uma variedade de desafios

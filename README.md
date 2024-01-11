@@ -101,7 +101,7 @@ A seguir alguns exemplos do tipo de audio produzido pelo sistema:
 |   7   | Invasão não vão da torre 225, muro de alvenaria faz lateral esquerda. | [🔊](https://polis.azureedge.net/mp4/examples/ex7.wav) |
 |   8   | Torre 32 para 33, faltando uma esfera de sinalização de um para raio. | [🔊](https://polis.azureedge.net/mp4/examples/ex8.wav) |
 
-Para o treinamento utilizou-se inicialmente 2.206 setenças totalizando mais de 20.000 palavras
+Para o treinamento utilizou-se inicialmente 2.206 sentenças totalizando mais de 20.000 palavras
 anotadas manualmente com auxílio da ferramenta [Label Studio](https://labelstud.io/), no entanto, embora a utilização dessa ferramenta gere um arquivo estruturado, houve a necessidade de se construir um conversor do arquivo de saída para que fosse ajustada ao formato específico necessário para o treinamento.
 
 Além da ferramenta de conversão foi contruído também uma ferramenta para fazer a análise exploratória do dataset onde foi possível avaliar a utilização de expressões regulares na criação de pré-anotações, conforme descrito abaixo:
