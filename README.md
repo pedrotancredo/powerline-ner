@@ -90,16 +90,16 @@ As transcrições contaram com um modelo customizado construído a partir de fer
 
 A seguir alguns exemplos do tipo de audio produzido pelo sistema:
 
-| # | Transcrição | Download |
-| :-: | :-: | :-: |
-| 1 | 264 cordoalha, lateral direita rompido. | [🔊](https://polis.azureedge.net/mp4/examples/ex1.wav)
-| 2 | Torre 886, brotos de eucalipto no vão. | [🔊](https://polis.azureedge.net/mp4/examples/ex2.wav)
-| 3 | Esfera aberta. Vão da torre 575. | [🔊](https://polis.azureedge.net/mp4/examples/ex3.wav)
-| 4 | Torre 009 da linha Rio Verde Rondonópolis, hortaliças no vão. | [🔊](https://polis.azureedge.net/mp4/examples/ex4.wav)
-| 5 | Torre 403, ninho de pássaro da fase central. | [🔊](https://polis.azureedge.net/mp4/examples/ex5.wav)
-| 6 | Fundação da torre 173, Furnas, pimenta um. | [🔊](https://polis.azureedge.net/mp4/examples/ex6.wav)
-| 7 | Invasão não vão da torre 225, muro de alvenaria faz lateral esquerda. | [🔊](https://polis.azureedge.net/mp4/examples/ex7.wav)
-| 8 | Torre 32 para 33, faltando uma esfera de sinalização de um para raio. | [🔊](https://polis.azureedge.net/mp4/examples/ex8.wav)
+|   #   |                              Transcrição                              |                       Download                        |
+| :---: | :-------------------------------------------------------------------: | :---------------------------------------------------: |
+|   1   |                264 cordoalha, lateral direita rompido.                | [🔊](https://polis.azureedge.net/mp4/examples/ex1.wav) |
+|   2   |                Torre 886, brotos de eucalipto no vão.                 | [🔊](https://polis.azureedge.net/mp4/examples/ex2.wav) |
+|   3   |                   Esfera aberta. Vão da torre 575.                    | [🔊](https://polis.azureedge.net/mp4/examples/ex3.wav) |
+|   4   |     Torre 009 da linha Rio Verde Rondonópolis, hortaliças no vão.     | [🔊](https://polis.azureedge.net/mp4/examples/ex4.wav) |
+|   5   |             Torre 403, ninho de pássaro da fase central.              | [🔊](https://polis.azureedge.net/mp4/examples/ex5.wav) |
+|   6   |              Fundação da torre 173, Furnas, pimenta um.               | [🔊](https://polis.azureedge.net/mp4/examples/ex6.wav) |
+|   7   | Invasão não vão da torre 225, muro de alvenaria faz lateral esquerda. | [🔊](https://polis.azureedge.net/mp4/examples/ex7.wav) |
+|   8   | Torre 32 para 33, faltando uma esfera de sinalização de um para raio. | [🔊](https://polis.azureedge.net/mp4/examples/ex8.wav) |
 
 
 
@@ -114,10 +114,9 @@ O esquema de anotação, utilizado na aplicação foi o [IOB-tagging](https://en
 
 ### 3. Resultados
 
-#### 3.1. Primeiro Treinamento
+#### 3.1. Treinamento Inicial
 
-Os resultados obtidos na primeira etapa do treinamento tiveram os seguintes valores
-para os hiperparâmetros
+Os resultados obtidos na primeira etapa do treinamento tiveram os seguintes valores para os hiperparâmetros
 
 **Modelo Base:** neuralmind/bert-base-portuguese-cased
 **MAX_LEN:** 32
@@ -127,22 +126,40 @@ para os hiperparâmetros
 **LEARNING_RATE:** 5e-06
 **MAX_GRAD_NORM:** 10
 
-|  | Precision | Recall | F1-Score | Support |
-|:-:|:-:|:-:|:-:|:-:|
-| ANOMALIA  | 0.65  | 0.83 | 0.73 | 271 |
-| COMPONENTE  | 0.77 | 0.64 | 0.70 | 208 |
-| EVENTO  | 0.92 | 0.99 | 0.95 | 492 |
-| LINHA  | 0.64 | 0.80 | 0.71 | 217 |
-| LOCALIZACAO  | 0.66  | 0.76 | 0.70 | 579 |
-| POSICAO  | 0.58  | 0.67 | 0.62 | 48 |
-|   |   |   |   |   |
-| **Micro Avg**  | **0.73**  | **0.82** | **0.77** | **1815** |
-| **Macro Avg**  | **0.70**  | **0.78** | **0.74** | **1815** |
-| **Weighted Avg**  | **0.74**  | **0.82** | **0.77** | **1815** |
+E chegou as seguintes métricas de resultado
 
-#### 3.2. Segundo Treinamento
+|                  | Precision |  Recall  | F1-Score | Support  |
+| :--------------: | :-------: | :------: | :------: | :------: |
+|     ANOMALIA     |   0.65    |   0.83   |   0.73   |   271    |
+|    COMPONENTE    |   0.77    |   0.64   |   0.70   |   208    |
+|      EVENTO      |   0.92    |   0.99   |   0.95   |   492    |
+|      LINHA       |   0.64    |   0.80   |   0.71   |   217    |
+|   LOCALIZACAO    |   0.66    |   0.76   |   0.70   |   579    |
+|     POSICAO      |   0.58    |   0.67   |   0.62   |    48    |
+|                  |           |          |          |          |
+|  **Micro Avg**   | **0.73**  | **0.82** | **0.77** | **1815** |
+|  **Macro Avg**   | **0.70**  | **0.78** | **0.74** | **1815** |
+| **Weighted Avg** | **0.74**  | **0.82** | **0.77** | **1815** |
 
-E o último resultado, públicado em [Hugging-Face](https://huggingface.co/pedrotancredo/powerlines-ner) :
+#### 3.2. Treinamento Final
+
+Como os resultados obtidos no treinamento inicial ficaram abaixo da expectativa, principalmente para as categorias LINHA, LOCALIZACAO e POSICAO foram realizados ajustes nos hiperparâmetros, no entanto, que se mostaram inócuos pois os resultados obtidos ficavam próximos aos descritos acima, então optou-se por realizar um ajuste na base de forma a reduzir o desbalaceamento dos dados e aprimorar a padronização da anotação
+
+A segunda versão do dataset expandiu a quantidade de sentenças de 2206 para 2880 e a quantidade de palavras para 27688 distribuidas da seguinte forma:
+
+|  Categoria  | Contagem |
+| :---------: | :------: |
+|   OUTSIDE   |   7620   |
+| LOCALIZACAO |   6893   |
+|    LINHA    |   4548   |
+|   EVENTO    |   3229   |
+|  ANOMALIA   |   2100   |
+| COMPONENTE  |   1747   |
+|   POSICAO   |   1551   |
+
+O resultado obtido do treinamento desta base expandida foi públicado em [Hugging-Face](https://huggingface.co/pedrotancredo/powerlines-ner) :
+
+Abaixo os parâmetros utilizados:
 
 **Modelo Base:** neuralmind/bert-base-portuguese-cased
 **MAX_LEN:** 64
@@ -152,32 +169,28 @@ E o último resultado, públicado em [Hugging-Face](https://huggingface.co/pedro
 **LEARNING_RATE:** 5e-05
 **MAX_GRAD_NORM:** 10
 
-|  | Precision | Recall | F1-Score | Support |
-|:-:|:-:|:-:|:-:|:-:|
-| ANOMALIA  | 0.77  | 0.80 | 0.79 | 361 |
-| COMPONENTE  | 0.83 | 0.88 | 0.85 | 391 |
-| EVENTO  | 0.97 | 1.00 | 0.98 | 664 |
-| LINHA  | 0.77 | 0.79 | 0.78 | 268 |
-| LOCALIZACAO  | 0.96  | 0.96 | 0.96 | 734 |
-| POSICAO  | 0.83  | 0.86 | 0.85 | 133 |
-|   |   |   |   |   |
-| **Micro Avg**  | **0.89**  | **0.91** | **0.90** | **2551** |
-| **Macro Avg**  | **0.86**  | **0.88** | **0.87** | **2551** |
-| **Weighted Avg**  | **0.89**  | **0.91** | **0.90** | **2551** |
+E as métricas obtidas:
+
+|                  | Precision |  Recall  | F1-Score | Support  |
+| :--------------: | :-------: | :------: | :------: | :------: |
+|     ANOMALIA     |   0.77    |   0.80   |   0.79   |   361    |
+|    COMPONENTE    |   0.83    |   0.88   |   0.85   |   391    |
+|      EVENTO      |   0.97    |   1.00   |   0.98   |   664    |
+|      LINHA       |   0.77    |   0.79   |   0.78   |   268    |
+|   LOCALIZACAO    |   0.96    |   0.96   |   0.96   |   734    |
+|     POSICAO      |   0.83    |   0.86   |   0.85   |   133    |
+|                  |           |          |          |          |
+|  **Micro Avg**   | **0.89**  | **0.91** | **0.90** | **2551** |
+|  **Macro Avg**   | **0.86**  | **0.88** | **0.87** | **2551** |
+| **Weighted Avg** | **0.89**  | **0.91** | **0.90** | **2551** |
 
 ### 4. Conclusões
-
-**TODO**
-**INCLUIR COMENTÁRIO SOBRE IMPORTÂNCIA DO MODELO DE TRANSCRIÇÃO**
-**INCLUIR ARQUIVOS DE AUDIO COM EXEMPLOS DO DADO**
-**INCLUIR IMAGEM DO SISTEMA DE COLETA**
-**INCLUIR IMAGEM DO SISTEMA DE PESQUISA POR COORDENADA?**
 
 O avanço significativo na abordagem de manutenção preditiva e monitoramento da infraestrutura crítica das linhas de transmissão é evidenciado pelo desenvolvimento e implementação do modelo de Reconhecimento de Entidades Nomeadas (NER). É importante destacar que, devido às características intrínsecas desse tipo de missão, onde o tempo disponível para anotações estruturadas é limitado, a utilização do NER se mostra particularmente valiosa. Ao examinar automaticamente as transcrições de áudios provenientes das inspeções aéreas, o NER classifica entidades como Componente, Anomalia, Posição, Linha de Transmissão, Evento e Localização. Isso resulta em uma visão integrada e abrangente do estado operacional das linhas, contribuindo para a eficiência e confiabilidade na manutenção preditiva desse componente crítico da infraestrutura elétrica.
 
 O treinamento do modelo, baseado no BERTimbau Base, incorporou um conjunto de dados diversificado e desafiador, capturando a variabilidade natural das descrições feitas por diferentes inspetores durante as inspeções. A aplicação do esquema de anotação IOB-tagging permitiu uma categorização precisa das entidades nomeadas, levando a resultados promissores nos indicadores de precisão, recall e F1-score.
 
-Os resultados dos dois treinamentos realizados mostram uma evolução significativa no desempenho do modelo. A segunda iteração, contou com ajustes nos hiperparâmetros e no próprio dataset onde, através de anotações manuais, buscou-se melhorar o balancemento das categorias. Tais ajustes demonstraram melhorias notáveis em todas as categorias, evidenciando a sensibilidade do modelo a otimizações específicas.
+Os resultados dos treinamentos realizados mostram uma evolução significativa no desempenho do modelo. A última iteração, contou com ajustes nos hiperparâmetros e no próprio dataset onde, através de anotações manuais, buscou-se melhorar o balancemento das categorias. Tais ajustes demonstraram melhorias notáveis em todas as categorias, evidenciando a sensibilidade do modelo a otimizações específicas.
 
 A integração potencial dos resultados do NER com modelos de análise de imagem e informações geográficas das linhas abre perspectivas para uma análise ainda mais abrangente e inteligente. Essa sinergia permitirá estratégias de manutenção preditiva mais robustas, capacitando as equipes a antecipar e abordar proativamente potenciais problemas operacionais.
 
