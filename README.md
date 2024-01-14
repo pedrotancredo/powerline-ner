@@ -119,15 +119,15 @@ ANOMALIA (quebrado)	| "\b[Qq]uebrad(?\:o\|a)s?\b[.,]?"
 ANOMALIA (ninho)	| "\b[Nn]inhos?(?: de (?:[Pp]assarinho\|[Pp]ássaro\|[Cc]uricaca\|[Gg]avião\|[Gg]aviões))?\b[.,?]?"
 POSICAO (fase)	| "(?:\b[Ff]ases?(?:[,.]? ?lateral)?(?: (?:esquerd[ao]\|direit[ao]))?(?: central\| do meio\| de baixo\| de cima\| inferior\| superior)?[.,]?(?: ré\| a?vante)?\b[.,]?)\|(?:\b(?:lateral)(?: (?:esquerd[ao]\|direit[ao]))?(?: central\| do meio\| de baixo\| de cima\| inferior\| superior)?[.,]?(?: ré\| a?vante)?\b[.,]?)"
 
-Todas as ferramentas podem ser acessadas através do link da monografia e, por se tratar de dados sensíveis da empresa, funcionam mediante a upload de arquivos externos.
+Todas as ferramentas podem ser acessadas através do [link da monografia](https://powerlines.streamlit.app/) no entanto, por se tratar de dados sensíveis da empresa, funcionam mediante a upload de arquivos externos.
 
 O esquema de anotação, utilizado na aplicação foi o [IOB-tagging](https://en.wikipedia.org/wiki/Inside%E2%80%93outside%E2%80%93beginning_(tagging)), que significa Inside-Outside-Beginning. Neste formato cada tag indica se a palavra correspondente está dentro, fora ou no início de uma entidade nomeada específica. A razão para isso é que entidades nomeadas podem ser formadas por mais de uma palavra.
 
-
+Por exemplo, se você tiver uma frase como "Raul Seixas era famoso no Brasil", então as etiquetas correspondentes seriam [B-PERS, I-PERS, O, O, O, B-GEO]. B-PERS significa que a palavra "Raul" é o início de uma pessoa, I-PERS significa que a palavra "Seixas" está dentro de uma pessoa, "O" significa que a palavra "era" está fora de uma entidade nomeada, e assim por diante. Portanto, geralmente temos tantas etiquetas quanto palavras em uma frase.
 
 #### 2.2. Treinamento
 
-O modelo foi treinado através do fine-tuning do modelo [BERTimbau Base](https://huggingface.co/neuralmind/bert-base-portuguese-cased) que consiste em um modelo BERT pré-treinado na língua portuguesa 
+O modelo foi treinado através do fine-tuning do modelo [BERTimbau Base](https://huggingface.co/neuralmind/bert-base-portuguese-cased) que consiste em um modelo BERT pré-treinado na língua portuguesa através da execução do notebook [train_net.ipynb](https://github.com/pedrotancredo/powerline-ner/blob/main/train_ner.ipynb)
 
 ### 3. Resultados
 
