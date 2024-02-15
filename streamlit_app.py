@@ -1,6 +1,5 @@
 import streamlit as st
 from PIL import Image
-import streamlit as st
 
 # Set config to expanded sidebar
 st.set_page_config(initial_sidebar_state="expanded")

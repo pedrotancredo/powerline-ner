@@ -1,24 +1,12 @@
+import base64
 import streamlit as st
-from streamlit_mic_recorder import mic_recorder, speech_to_text
-from transformers import AutoTokenizer, AutoModelForTokenClassification, pipeline
+import requests
+from annotated_text import annotated_text
+from streamlit_mic_recorder import speech_to_text
 
-
-@st.cache_data
-def load_model():
-    # model_name = "recursos/base_m3/"
-    model_name = "pedrotancredo/powerlines-ner"
-    tokenizer = AutoTokenizer.from_pretrained(model_name, model_max_length=512)
-    model = AutoModelForTokenClassification.from_pretrained(
-        model_name, use_safetensors=True
-    )
-    pipe = pipeline(
-        task="token-classification",
-        model=model.to("cpu"),
-        tokenizer=tokenizer,
-        aggregation_strategy="simple",
-    )
-
-    return pipe
+def query(payload):
+    response = requests.post(API_URL, headers=headers, json=payload)
+    return response.json()
 
 
 def agrupar_entidades_adjacentes(dados):
@@ -50,7 +38,6 @@ def agrupar_entidades_adjacentes(dados):
         resultado.append(grupo_atual)
 
     return resultado
-
 
 # Função para agrupar entidades adjacentes
 def aplicar_agrupamento_na_string(resultado_agrupado, texto_original):
@@ -86,19 +73,33 @@ def aplicar_agrupamento_na_string(resultado_agrupado, texto_original):
     return saida
 
 
-# pipe("inspeção detalhada na torre 37 da ibntpr1, isolador quebrado na fase lateral esquerda")
-teste = load_model()
+API_TOKEN = st.secrets["API_TOKEN"]
+API_URL = st.secrets["API_URL"]
+
+headers = {"Authorization": f"Bearer {API_TOKEN}"}
+
+# Inicializnado o endpoint
+query("Inspeção detalhada torre 123, esfera desbotada, necessita substituição. Linha palmares campo grande, para-raios esquerdo")
 
 state = st.session_state
 
-st.write("Texto descritivo sobre como utilizar a ferramenta")
+st.markdown("# Demonstração")
+st.markdown(
+    """<div align="justify"><p>No exemplo é possível testar o modelo fazendo
+    envio de texto transcrito a partir de gravação de audio:</p></div>""",
+    unsafe_allow_html=True,
+)
 
-if "text_received" not in state:
-    state.text_received = []
+if "text_input" not in state:
+    state.text_input = ""
+
+if "text" not in state:
+    state.text = ""
 
 c1, c2 = st.columns((2, 1))
 with c1:
     st.write("Gravar áudio:")
+
 with c2:
     text = speech_to_text(
         "🔴 Gravar",
@@ -108,36 +109,27 @@ with c2:
         just_once=True,
         key="STT",
     )
-# st.write(text)
-if text:
-    state.text_received = text
-    # state.text_received.append(text)
+if state.get("STT",False):
+    state.text = state["STT_output"]
+    state.audio = state.STT["audio_base64"]
 
-    # for text in state.text_received:
-    # st.write(text)
+if state.get("audio", False):
+    audio_data = base64.b64decode(state.audio)
+    st.audio(audio_data, format="audio/wav")
 
-    # st.button("Clear", on_click=lambda: state.clear())
+state["text_input"] = st.text_input("Caso seja necessário, corrigir ou alterar a transcrição:", value=state.text)
 
-    # dados = teste("inspeção detalhada não sei o quê torre 233 isolador quebrado na fase lateral esquerda")
-    dados = teste(text)
+
+if state.text_input:
+
+    dados = query(state.text_input)
 
     resultado_agrupado = agrupar_entidades_adjacentes(dados)
-    texto_original = text
+    texto_original = state.text_input
 
     # Aplicar agrupamento na string
     saida = aplicar_agrupamento_na_string(resultado_agrupado, texto_original)
 
     # Exibir resultado
-    print(saida)
-    from annotated_text import annotated_text, annotation
-
+    st.markdown('### Resultado da Análise:')
     annotated_text(saida)
-    # annotation(saida)
-
-
-# st.write()
-# st.write("Record your voice, and play the recorded audio:")
-# audio=mic_recorder(start_prompt="⏺️",stop_prompt="⏹️",key='recorder')
-
-# if audio:
-#     st.audio(audio['bytes'])

@@ -7,6 +7,9 @@ Dockerfile
 .vscode/
 run.bat
 images/banner-ori.png
+sandbox.ipynb
+.streamlit/
+*.pdf
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
