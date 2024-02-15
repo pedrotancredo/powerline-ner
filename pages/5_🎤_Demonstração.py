@@ -117,15 +117,15 @@ if state.get("audio", False):
     audio_data = base64.b64decode(state.audio)
     st.audio(audio_data, format="audio/wav")
 
-state["text_input"] = st.text_input("Caso seja necessário, corrigir ou alterar a transcrição:", value=state.text)
+# state["text_input"] = st.text_input("Caso seja necessário, corrigir ou alterar a transcrição:", value=state.text)
 
 
-if state.text_input:
+if state.text:
 
-    dados = query(state.text_input)
+    dados = query(state.text)
 
     resultado_agrupado = agrupar_entidades_adjacentes(dados)
-    texto_original = state.text_input
+    texto_original = state.text
 
     # Aplicar agrupamento na string
     saida = aplicar_agrupamento_na_string(resultado_agrupado, texto_original)
