@@ -77,9 +77,6 @@ def set_values():
         state.text = state["STT_output"]
         state.audio = state.STT["audio_base64"]
 
-    if state.get("audio", False):
-        audio_data = base64.b64decode(state.audio)
-        st.audio(audio_data, format="audio/wav")
 
 API_TOKEN = st.secrets["API_TOKEN"]
 API_URL = st.secrets["API_URL"]
@@ -118,6 +115,9 @@ with c2:
         just_once=True,
         key="STT",
     )
+if state.get("audio", False):
+    audio_data = base64.b64decode(state.audio)
+    st.audio(audio_data, format="audio/wav")
 
 state["text_input"] = st.text_input("Caso necessário, alterar a transcrição:",
                                     value=state.text)
