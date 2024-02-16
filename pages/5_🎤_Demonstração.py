@@ -72,6 +72,14 @@ def aplicar_agrupamento_na_string(resultado_agrupado, texto_original):
 
     return saida
 
+def set_values():
+    if state.get("STT",False):
+        state.text = state["STT_output"]
+        state.audio = state.STT["audio_base64"]
+
+    if state.get("audio", False):
+        audio_data = base64.b64decode(state.audio)
+        st.audio(audio_data, format="audio/wav")
 
 API_TOKEN = st.secrets["API_TOKEN"]
 API_URL = st.secrets["API_URL"]
@@ -105,27 +113,22 @@ with c2:
         "🔴 Gravar",
         "🟩 Parar",
         language="pt-BR",
+        callback=set_values,
         use_container_width=True,
         just_once=True,
         key="STT",
     )
-if state.get("STT",False):
-    state.text = state["STT_output"]
-    state.audio = state.STT["audio_base64"]
 
-if state.get("audio", False):
-    audio_data = base64.b64decode(state.audio)
-    st.audio(audio_data, format="audio/wav")
-
-# state["text_input"] = st.text_input("Caso seja necessário, corrigir ou alterar a transcrição:", value=state.text)
+state["text_input"] = st.text_input("Caso necessário, alterar a transcrição:",
+                                    value=state.text)
 
 
-if state.text:
+if state.text_input:
 
-    dados = query(state.text)
+    dados = query(state.text_input)
 
     resultado_agrupado = agrupar_entidades_adjacentes(dados)
-    texto_original = state.text
+    texto_original = state.text_input
 
     # Aplicar agrupamento na string
     saida = aplicar_agrupamento_na_string(resultado_agrupado, texto_original)
