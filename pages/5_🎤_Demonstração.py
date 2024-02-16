@@ -118,12 +118,14 @@ if state.get("audio", False):
 
 state["text_input"] = st.text_input("Caso prefira, altere ou digite um texto:",
                                     value=state.text)
-
+import time
 
 if state.text_input:
 
     dados = query(state.text_input)
-    while "entity_group" not in dados[0]:
+    while "error" in dados:
+        with st.spinner('Carregando modelo...'):
+            time.sleep(3)
         dados = query(state.text_input)
 
     resultado_agrupado = agrupar_entidades_adjacentes(dados)
