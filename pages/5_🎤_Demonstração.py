@@ -119,7 +119,7 @@ if state.get("audio", False):
     audio_data = base64.b64decode(state.audio)
     st.audio(audio_data, format="audio/wav")
 
-state["text_input"] = st.text_input("Caso necessário, alterar a transcrição:",
+state["text_input"] = st.text_input("Caso prefira, altere ou digite um texto:",
                                     value=state.text)
 
 
@@ -134,5 +134,5 @@ if state.text_input:
     saida = aplicar_agrupamento_na_string(resultado_agrupado, texto_original)
 
     # Exibir resultado
-    st.markdown('### Resultado da Análise:')
+    st.markdown('### Resultado da Inferência:')
     annotated_text(saida)
