@@ -83,9 +83,6 @@ API_URL = st.secrets["API_URL"]
 
 headers = {"Authorization": f"Bearer {API_TOKEN}"}
 
-# Inicializnado o endpoint
-query("Inspeção detalhada torre 123, esfera desbotada, necessita substituição. Linha palmares campo grande, para-raios esquerdo")
-
 state = st.session_state
 
 st.markdown("# Demonstração")
@@ -126,6 +123,8 @@ state["text_input"] = st.text_input("Caso prefira, altere ou digite um texto:",
 if state.text_input:
 
     dados = query(state.text_input)
+    while "entity_group" not in dados[0]:
+        dados = query(state.text_input)
 
     resultado_agrupado = agrupar_entidades_adjacentes(dados)
     texto_original = state.text_input
