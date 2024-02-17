@@ -10,6 +10,11 @@ images/banner-ori.png
 sandbox.ipynb
 .streamlit/
 *.pdf
+pages/1_*.py
+pages/2_*.py
+pages/3_*.py
+pages/4_*.py
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
