@@ -94,18 +94,17 @@ st.markdown(
      tais como:</p></div>""",
     unsafe_allow_html=True,
 )
-
-st.markdown("""- 264 cordoalha, lateral direita rompida.
+st.expander("Exemplos de frases", expanded=False).markdown("""- 264 cordoalha, lateral direita rompida.
 - Esfera aberta. Vão da torre 575.
 - Torre 97 da linha Campos Itaipu, vegetação alta no vão.
-- Torre 103, ninho de pássaro da fase central.
-- Invasão no vão da torre 225, muro de alvenaria faz lateral esquerda.
-- Torre 50 para 51, faltando uma esfera de sinalização de um para raio.""")
+- Torre 103, ninho de pássaro na fase central.
+- Invasão no vão da torre 225, muro de alvenaria fase lateral esquerda.
+- Torre 50 para 51, faltando uma esfera de sinalização.""")
 
 st.markdown(
-    """<div align="justify"><p>Sinta-se a vontade para alterar os componentes,
-    sintomas, ordem do texto, inventar nome de linhas, testar diferentes adjetivos
-     para descrever os defeitos ou até mesmo omitir partes da frase.</div>""",
+    """<div align="justify"><p>Sinta-se à vontade para alterar os componentes, 
+    sintomas, ordem do texto, inventar nomes de linhas, testar diferentes adjetivos
+    para descrever os defeitos ou até mesmo omitir partes da frase</div>""",
     unsafe_allow_html=True,
 )
 
