@@ -94,7 +94,8 @@ st.markdown(
      tais como:</p></div>""",
     unsafe_allow_html=True,
 )
-st.expander("Exemplos de frases", expanded=False).markdown("""- 264 cordoalha, lateral direita rompida.
+st.expander("Exemplos de frases", expanded=False).markdown("""
+- 264 cordoalha, lateral direita rompida.
 - Esfera aberta. Vão da torre 575.
 - Torre 97 da linha Campos Itaipu, vegetação alta no vão.
 - Torre 103, ninho de pássaro na fase central.
