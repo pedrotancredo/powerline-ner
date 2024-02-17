@@ -89,9 +89,8 @@ state = st.session_state
 st.markdown("# Demonstração")
 st.markdown(
     """<div align="justify"><p>No exemplo é possível testar o modelo fazendo
-    envio de texto transcrito a partir de gravação de audio:</p>
-    <p>Tente utilizando frases como as que poderiam ser ditas pelos inspetores,
-     tais como:</p></div>""",
+    envio de texto transcrito a partir de gravação de audio. Tente utilizando
+    frases como as que poderiam ser ditas pelos inspetores.</p></div>""",
     unsafe_allow_html=True,
 )
 st.expander("Exemplos de frases", expanded=False).markdown("""
